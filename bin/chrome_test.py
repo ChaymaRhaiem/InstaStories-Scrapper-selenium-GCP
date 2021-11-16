@@ -26,10 +26,10 @@ drive = webdriver.Chrome(service=service)
 
 #single target_user stories scrapping
 #add midnight time for scrapping
-target_username = "pharmashoptn"
+target_username = "//"
 
-my_username = "vanitasy"
-my_password = "fuckinghelldude"
+my_username = "//"
+my_password = "//"
 
 images = []
 
