@@ -1,4 +1,4 @@
-# InstaStories-Scrapper---selenium-
+# InstaStories-Scrapper---selenium-Google Cloud Platform (Storage/Cloud Vision)
 
 
 <h1 align="center">Instagram Stories Scraper </h1>
