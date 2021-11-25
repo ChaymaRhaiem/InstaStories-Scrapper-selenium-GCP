@@ -103,15 +103,15 @@ Quick Start
 
 In order to use this library, you first need to go through the following steps:
 
-1. `Select or create a Cloud Platform project.`_
-2. `Enable billing for your project.`_
-3. `Enable the Google Cloud Vision API.`_
-4. `Setup Authentication.`_
+1. `Select or create a Cloud Platform project.`
+2. `Enable billing for your project.`
+3. `Enable the Google Cloud Vision API.`
+4. `Setup Authentication.`
 
-.. _Select or create a Cloud Platform project.: https://console.cloud.google.com/project
-.. _Enable billing for your project.: https://cloud.google.com/billing/docs/how-to/modify-project#enable_billing_for_a_project
-.. _Enable the Google Cloud Vision API.:  https://cloud.google.com/vision
-.. _Setup Authentication.: https://googleapis.dev/python/google-api-core/latest/auth.html
+.. Select or create a Cloud Platform project.: https://console.cloud.google.com/project
+.. Enable billing for your project.: https://cloud.google.com/billing/docs/how-to/modify-project#enable_billing_for_a_project
+.. Enable the Google Cloud Vision API.:  https://cloud.google.com/vision
+.. Setup Authentication.: https://googleapis.dev/python/google-api-core/latest/auth.html
 
 
 
