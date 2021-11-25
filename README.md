@@ -179,16 +179,7 @@ Example Usage
 Known Limitations
 ~~~~~~~~~~~~~~~~~
 
-Pylint Does Not Work Out Of The Box
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Pylint throws errors by default when checking code that uses feature methods on the 
-``ImageAnnotatorClient`` class, such as ``label_detection()`` or ``text_detection()``.
-
-As a workaround, member checking on all methods of the ``ImageAnnotatorClient`` can be
-disabled using Pylint's ``generated-members`` option. To do this on a line-by-line basis,
-add a comment like ``# pylint: disable=no-member`` to suppress this error. To do this
-for a whole project, you can add the following lines to a ``.pylintrc`` file in your project::
 
   [TYPECHECK]
   
