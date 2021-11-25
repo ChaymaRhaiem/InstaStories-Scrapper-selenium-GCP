@@ -50,16 +50,16 @@ drive = webdriver.Chrome(service=service, options=options)
 
 #single target_user stories scrapping
 #add midnight time for scrapping
-target_username = "boublinet"
+target_username = "//"
 
-my_username = "botirl1"
-my_password = "genosisaqt12"
+my_username = "//"
+my_password = "//"
 
 images = []
 videos = []
 list=[]
 
-with open('C:/Users/Lenovo/PycharmProjects/selenium01/venv/project-101-321021-9911dab88c01.json') as source:
+with open('file.json') as source:
     info = json.load(source)
 
 storage_credentials = service_account.Credentials.from_service_account_info(info)
@@ -69,8 +69,8 @@ client = storage.Client(project=project_id, credentials=storage_credentials)
 # Explicitly use service account credentials by specifying the private key
 # Retrieve an existing bucket
 dest_bucket = client.get_bucket('insta_stories0')
-directory_path = "C:/Users/Lenovo/Pictures/selenium_img"
-gcs_path = "insta_stories0/images"
+directory_path = "dir"
+gcs_path = "//"
 
 def img_path(dest_bucket,list):
     blobs = client.list_blobs(dest_bucket)
@@ -82,7 +82,7 @@ def img_path(dest_bucket,list):
 
 
 def detect_logos_uri(uri):
-    with open('C:/Users/Lenovo/PycharmProjects/selenium01/venv/project-101-321021-9911dab88c01.json') as source:
+    with open('file.json') as source:
         info = json.load(source)
 
     storage_credentials = service_account.Credentials.from_service_account_info(info)
@@ -128,7 +128,6 @@ def upload_directory_to_gcs(directory_path, dest_bucket, gcs_path):
 
 
 
-#os.environ["GOOGLE_APPLICATION_CREDENTIALS"] ="C:/Users/Lenovo/PycharmProjects/selenium01/venv/project-101-321021-9911dab88c01.json"
 
 
 
@@ -229,7 +228,7 @@ img_path(dest_bucket,list)
 def detect_blobs(dest_bucket,list):
      blobs = client.list_blobs(dest_bucket)
      for i in range(len(list)):
-             uri = "gs://insta_stories0/insta_stories0/images/" + target_username +"/"+ list[i]
+             uri = "gs://uri" + target_username +"/"+ list[i]
              sleep(1)
              detect_logos_uri(uri)
 
@@ -239,7 +238,7 @@ def endMe():
 def save_to_computer(images,target_username):
     now = datetime.now()
     dt_string = now.strftime("%d-%m-%Y")
-    folder_location = 'C:/Users/Lenovo/Pictures/selenium_img'
+    folder_location = 'dir'
     newpath = folder_location + "/" + target_username
     print(newpath)
     if not os.path.exists(newpath):
