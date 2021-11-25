@@ -45,7 +45,7 @@ options.headless = True
 
 
 service = Service("C:\Instagram_stories_scrapper\chrome web driver\chromedriver_win32/chromedriver.exe")
-drive = webdriver.Chrome(service=service, options=options)
+drive = webdriver.Chrome(service=service,options=options)
 
 
 #single target_user stories scrapping
@@ -63,14 +63,14 @@ with open('file.json') as source:
     info = json.load(source)
 
 storage_credentials = service_account.Credentials.from_service_account_info(info)
-project_id = 'project-101-321021'
+project_id = 'project-//'
 client = storage.Client(project=project_id, credentials=storage_credentials)
 
 # Explicitly use service account credentials by specifying the private key
 # Retrieve an existing bucket
-dest_bucket = client.get_bucket('insta_stories0')
+dest_bucket = client.get_bucket('bucket-name')
 directory_path = "dir"
-gcs_path = "//"
+gcs_path = "bucket-name/directory"
 
 def img_path(dest_bucket,list):
     blobs = client.list_blobs(dest_bucket)
@@ -80,7 +80,7 @@ def img_path(dest_bucket,list):
         list.append(path[3])
     print(list)
 
-
+brands=[]
 def detect_logos_uri(uri):
     with open('file.json') as source:
         info = json.load(source)
@@ -95,16 +95,15 @@ def detect_logos_uri(uri):
 
     response = client.logo_detection(image=image)
     logos = response.logo_annotations
-    print('Logos:')
 
     for logo in logos:
         print(logo.description)
-    """if response.error.message:
+        brands.append(logo.description)
+""" if response.error.message:
         raise Exception(
             '{}\nFor more info on error messages, check: '
             'https://cloud.google.com/apis/design/errors'.format(
-                response.error.message))
-"""
+                response.error.message))"""
 
 def list_blobs(dest_bucket):
 
@@ -123,23 +122,6 @@ def upload_directory_to_gcs(directory_path, dest_bucket, gcs_path):
                blob = dest_bucket.blob(remote_path)
                blob.upload_from_filename(local_file)
     return
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def scrapeStories(traget_username):
@@ -188,18 +170,6 @@ def getStories(target_username,images):
         print(str(len(images)) + "images found.")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 def login(my_username,my_password,target_username,dest_bucket):
      drive.get("https://www.instagram.com/accounts/login/")
      sleep(3)
@@ -228,7 +198,7 @@ img_path(dest_bucket,list)
 def detect_blobs(dest_bucket,list):
      blobs = client.list_blobs(dest_bucket)
      for i in range(len(list)):
-             uri = "gs://uri" + target_username +"/"+ list[i]
+             uri = "gs://uri/" + target_username +"/"+ list[i]
              sleep(1)
              detect_logos_uri(uri)
 
@@ -238,7 +208,7 @@ def endMe():
 def save_to_computer(images,target_username):
     now = datetime.now()
     dt_string = now.strftime("%d-%m-%Y")
-    folder_location = 'dir'
+    folder_location = "dir"
     newpath = folder_location + "/" + target_username
     print(newpath)
     if not os.path.exists(newpath):
@@ -250,11 +220,6 @@ def save_to_computer(images,target_username):
             print('aaaa')
             f_name = images[i].split('/')[-1].split('?', 1)[0]
             f_path_file =  newpath + "/" + dt_string +  "_" + f_name
-            #img_data = requests.get(images[i]).content
-            #print(img_data)
-
-
-
             with requests.get(images[i], stream=True) as r:
                   with open( f_path_file, "wb") as f:
                                 for chunk in r.iter_content(chunk_size=8192):
@@ -274,11 +239,13 @@ def download(mode="download"):
 def computer_vision(mode="detect"):
     detect_blobs(dest_bucket,list)
 
-def scrapeInsta(mode="default"):
+def scrapeInsta():
     login(my_username, my_password, target_username, dest_bucket)
     upload_directory_to_gcs(directory_path, dest_bucket, gcs_path)
     detect_blobs(dest_bucket,list)
 
+computer_vision()
+print(brands)
 
 ####TO DO  dossier dataframe bucket directories named with day  .csv - backend selenium   no time stamp  -
 #DASH - >  HTML website
