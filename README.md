@@ -144,7 +144,7 @@ disable this error check. For example, if you choose a convention of naming your
 ``image_annotator_client.*`` or something similar.
 
       
-##Common Errors:
+### Common Errors:
 Certain images were not downloaded (currently working on it)
  
 
