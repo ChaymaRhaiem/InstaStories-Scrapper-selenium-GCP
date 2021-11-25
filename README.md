@@ -10,6 +10,8 @@
   </p>
 <p>
   <p>A tool that <b>scrapes</b> Instagram stories implemented in Python 3 using the Selenium module.<p>
+  <p> Uploads captured stories to GCP </p>
+  <p> Uses Cloud Vision API to detect the logos in each image </p>
 </p>
 
 
@@ -141,4 +143,8 @@ disable this error check. For example, if you choose a convention of naming your
 ``ImageAnnotatorClient`` variables ``image_annotator_client``, then your regex could be
 ``image_annotator_client.*`` or something similar.
 
+      
+##Common Errors:
+Certain images were not downloaded (currently working on it)
+ 
 
