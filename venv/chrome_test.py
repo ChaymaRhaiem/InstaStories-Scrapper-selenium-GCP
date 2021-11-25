@@ -38,8 +38,6 @@ import argparse
 except:
     print("")
 """
-args = parser.parse_args()
-print(args)
 options = Options()
 options.headless = True
 
@@ -115,32 +113,6 @@ def list_blobs(dest_bucket):
     for blob in blobs:
         print(blob.name)
 
-"""def cloud_vision(dest_bucket,blobs):
-    from google.cloud import vision
-    import io
-    with open('C:/Users/Lenovo/PycharmProjects/selenium01/venv/project-101-321021-9911dab88c01.json') as source:
-        info = json.load(source)
-
-    storage_credentials = service_account.Credentials.from_service_account_info(info)
-    client = vision.ImageAnnotatorClient( credentials=storage_credentials)
-
-#    gcs_file = cloudstorage.open(file)
- #   contents = gcs_file.read()
-    content = blobs.read()
-    for blob in blobs:
-        blob = vision.Image(content=content)
-        image = vision.Image(content=content)
-        response = client.logo_detection(image=image)
-        logos = response.logo_annotations
-        print('Logos:')
-
-    for logo in logos:
-     print(logo.description)
-
-    if response.error.message:
-        raise Exception(
-        '{}\nFor more info on error messages, check: '
-        'https://cloud.google.com/apis/design/errors'.format(response.error.message))"""
 
 def upload_directory_to_gcs(directory_path, dest_bucket, gcs_path):
     for local_file in directory_path:
